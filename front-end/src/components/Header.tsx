@@ -19,11 +19,12 @@ export default function Header() {
       sx={{
         width: "1258px",
         height: "57px",
-        border: "solid",
+
         paddingInline: "24px",
         display: "flex",
         justifyContent: "space-between",
         alignItems: "center",
+        margin: "auto",
       }}
     >
       <Box
@@ -107,11 +108,7 @@ export default function Header() {
           >
             <SearchIcon />
           </IconButton>
-          <InputBase
-            sx={{ ml: 1, flex: 1 }}
-            placeholder="Хайх"
-            //   inputProps={{ "aria-label": "search google maps" }}
-          />
+          <InputBase sx={{ ml: 1, flex: 1 }} placeholder="Хайх" />
         </Paper>
 
         <Box

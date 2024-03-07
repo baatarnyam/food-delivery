@@ -20,5 +20,7 @@ const UserSchema = new Schema<UserModelType>(
   { timestamps: true }
 );
 
+UserSchema.index({ email: 1 }, { unique: true });
+
 export const UserModel: Model<UserModelType> =
   models["Users"] || model("Users", UserSchema);

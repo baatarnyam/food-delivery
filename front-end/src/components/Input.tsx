@@ -1,8 +1,8 @@
-import React from "react";
 import { InputBase } from "@mui/material";
 
 export default function Input(props: any) {
   const { placeholder, type } = props;
+
   return (
     <InputBase
       sx={{
@@ -14,7 +14,6 @@ export default function Input(props: any) {
       }}
       type={type}
       placeholder={placeholder}
-      //   placeholder="Нэрээ оруулна уу"
     />
   );
 }

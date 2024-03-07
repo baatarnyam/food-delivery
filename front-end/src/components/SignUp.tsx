@@ -1,6 +1,19 @@
-import React from "react";
-import { Box, InputBase, TextField, Typography } from "@mui/material";
+"use client";
+
+import * as React from "react";
+
+import {
+  Box,
+  InputBase,
+  TextField,
+  Typography,
+  FormControl,
+} from "@mui/material";
 import Input from "./Input";
+import Password from "./Password";
+import PhoneNumber from "./PhoneNumber";
+import Buttons from "./Buttons";
+import Button from "@mui/material/Button";
 
 export default function SignUp() {
   return (
@@ -21,13 +34,13 @@ export default function SignUp() {
         Бүртгүүлэх
       </Typography>
 
-      <Box
+      <FormControl
         sx={{
           width: "384px",
-          height: "409px",
+          height: "fit",
           display: "flex",
           flexDirection: "column",
-          justifyContent: "space-between",
+          gap: "16px",
         }}
       >
         <Box
@@ -69,7 +82,7 @@ export default function SignUp() {
           <Typography sx={{ fontSize: "14px", fontWeight: "400" }}>
             Утас
           </Typography>
-          <Input placeholder="Та утсаа оруулна уу" type="number" />
+          <PhoneNumber />
         </Box>
 
         <Box
@@ -83,7 +96,7 @@ export default function SignUp() {
           <Typography sx={{ fontSize: "14px", fontWeight: "400" }}>
             Нууц үг
           </Typography>
-          <Input placeholder="Нууц үгээ оруулна уу" type="password" />
+          <Password placeholder="Нууц үгээ оруулна уу" />
         </Box>
 
         <Box
@@ -97,9 +110,41 @@ export default function SignUp() {
           <Typography sx={{ fontSize: "14px", fontWeight: "400" }}>
             Нууц үг давтах
           </Typography>
-          <Input placeholder="Нууц үгээ оруулна уу" type="password" />
+          <Password placeholder="Нууц үгээ оруулна уу" />
         </Box>
-      </Box>
+
+        <Box
+          sx={{
+            width: "383px",
+            height: "120px",
+            marginTop: "25px",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "space-between",
+            border: "solid",
+          }}
+        >
+          <Box sx={{ width: "full", height: "40px", display: "flex" }}>
+            *<Typography>Үйлчилгээний нөхцөл зөвшөөрөх</Typography>
+          </Box>
+          {/* <Buttons
+            width="380px"
+            height="48px"
+            bgColor="#18BA51"
+            text="Бүртгүүлэх"
+          /> */}
+          {/* <Button variant="outlined" sx={{ backgroundColor: "red" }}>
+            Бүртгүүлэх
+          </Button> */}
+
+          <Buttons
+            width="380px"
+            height="48px"
+            text="Бүртгүүлэх"
+            bgColor="#18BA51"
+          />
+        </Box>
+      </FormControl>
     </Box>
   );
 }

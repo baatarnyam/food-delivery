@@ -12,7 +12,7 @@ import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import { useState } from "react";
 
 export default function Password(props: any) {
-  const { placeholder, height } = props;
+  const { placeholder, height, onChange } = props;
   const [showPassword, setShowPassword] = useState(false);
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
@@ -20,6 +20,7 @@ export default function Password(props: any) {
     <FormControl sx={{ width: "380px", bgcolor: "#ECEDF0" }}>
       <OutlinedInput
         // id="outlined-adornment-password"
+        onChange={onChange}
         placeholder={placeholder}
         type={showPassword ? "text" : "password"}
         endAdornment={
@@ -33,7 +34,7 @@ export default function Password(props: any) {
           </IconButton>
           //   </InputAdornment>
         }
-        sx={{ height: "48px" }}
+        sx={{ height: "40px" }}
       />
     </FormControl>
   );

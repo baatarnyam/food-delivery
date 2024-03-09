@@ -29,7 +29,7 @@ const PhoneNumberValidation = () => {
           }}
           inputStyle={{
             width: "382px",
-            height: "48px",
+            height: "40px",
             backgroundColor: "#ECEDF0",
           }}
         />

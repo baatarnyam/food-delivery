@@ -25,6 +25,7 @@ export default function Header() {
         justifyContent: "space-between",
         alignItems: "center",
         margin: "auto",
+        marginBottom: "74px",
       }}
     >
       <Box

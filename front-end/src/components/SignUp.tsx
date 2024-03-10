@@ -8,32 +8,18 @@ import PhoneNumber from "./PhoneNumber";
 import Button from "@mui/material/Button";
 import Checkbox from "@mui/material/Checkbox";
 import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
+import axios from "axios";
+import { useFormControl } from "@mui/material/FormControl";
 
 export default function SignUp() {
   const label = { inputProps: { "aria-label": "Checkbox demo" } };
   const [listen, setListen] = useState(false);
   const [checked, setChecked] = useState(false);
 
-  const [userData, setUserData] = useState({});
-  const [data, setData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    password: "",
-  });
-
   const handleClicked = () => {
     setChecked(checked);
     console.log("clicked");
-  };
-
-  const handleChange = (e: any) => {
-    const { name, value } = e.target;
-
-    setUserData({
-      ...userData,
-      [name]: value,
-    });
   };
 
   return (
@@ -48,20 +34,14 @@ export default function SignUp() {
         flexDirection: "column",
         alignItems: "center",
         gap: "40px",
+        margin: "auto",
       }}
     >
       <Typography sx={{ fontSize: "28px", fontWeight: "700" }}>
         Бүртгүүлэх
       </Typography>
 
-      <FormControl
-        // sx={{
-        //   width: "384px",
-        //   height: "fit",
-        //   display: "flex",
-        //   flexDirection: "column",
-        //   gap: "16px",
-        // }}
+      <form
         style={{
           width: "384px",
           height: "fit",
@@ -70,6 +50,7 @@ export default function SignUp() {
           gap: "16px",
         }}
         onSubmit={handleClicked}
+        action=""
       >
         <Box
           sx={{
@@ -85,7 +66,8 @@ export default function SignUp() {
           <Input
             placeholder="Нэрээ оруулна уу"
             type="text"
-            onChange={handleChange}
+            height="42px"
+            name="name"
           />
         </Box>
 
@@ -103,7 +85,8 @@ export default function SignUp() {
           <Input
             placeholder="И-мэйл хаягаа оруулна уу"
             type="email"
-            onChange={handleChange}
+            height="42px"
+            name="email"
           />
         </Box>
 
@@ -118,7 +101,7 @@ export default function SignUp() {
           <Typography sx={{ fontSize: "14px", fontWeight: "400" }}>
             Утас
           </Typography>
-          <PhoneNumber />
+          <PhoneNumber name="phone" />
         </Box>
 
         <Box
@@ -132,10 +115,7 @@ export default function SignUp() {
           <Typography sx={{ fontSize: "14px", fontWeight: "400" }}>
             Нууц үг
           </Typography>
-          <Password
-            placeholder="Нууц үгээ оруулна уу"
-            onChange={handleChange}
-          />
+          <Password placeholder="Нууц үгээ оруулна уу" name="password" />
         </Box>
 
         <Box
@@ -149,10 +129,7 @@ export default function SignUp() {
           <Typography sx={{ fontSize: "14px", fontWeight: "400" }}>
             Нууц үг давтах
           </Typography>
-          <Password
-            placeholder="Нууц үгээ оруулна уу"
-            onChange={handleChange}
-          />
+          <Password placeholder="Нууц үгээ оруулна уу" name="RePassword" />
         </Box>
 
         <Box
@@ -163,7 +140,6 @@ export default function SignUp() {
             display: "flex",
             flexDirection: "column",
             justifyContent: "space-between",
-            // border: "solid",
           }}
         >
           <Box
@@ -182,32 +158,24 @@ export default function SignUp() {
                 setListen(!listen);
               }}
             />
-
             <Typography>Үйлчилгээний нөхцөл зөвшөөрөх</Typography>
           </Box>
 
           <Button
             type="submit"
             variant="contained"
-            // onClick={handleClicked}
             disabled={!listen}
-            // sx={{
-            //   width: "379px",
-            //   height: "48px",
-            //   bgcolor: "#18BA51",
-            //   fontSize: "16px",
-            // }}
-
             style={{
               backgroundColor: "#18BA51",
               width: "379px",
               height: "48px",
             }}
+            // onClick={handleClicked}
           >
             Бүртгүүлэх
           </Button>
         </Box>
-      </FormControl>
+      </form>
     </Box>
   );
 }

@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 
-const PhoneNumberValidation = () => {
+const PhoneNumberValidation = (props: any) => {
+  const { name } = props;
   const [phoneNumber, setPhoneNumber] = useState("");
   const [valid, setValid] = useState(true);
 
@@ -26,6 +27,7 @@ const PhoneNumberValidation = () => {
           onChange={handleChange}
           inputProps={{
             required: true,
+            name: { name },
           }}
           inputStyle={{
             width: "382px",

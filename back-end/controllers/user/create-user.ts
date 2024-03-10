@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { createUserQuery } from "../../queries/user/create-user-query";
+import { createUserQuery } from "../../queries";
 
 export const createUserController = async (req: Request, res: Response) => {
   try {

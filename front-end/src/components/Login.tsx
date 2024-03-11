@@ -7,6 +7,7 @@ import Password from "./Password";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
+import Link from "next/link";
 
 export default function Login() {
   const [userData, setUserData] = useState({});
@@ -24,6 +25,7 @@ export default function Login() {
 
   const handleClicked = async (e: any) => {
     e.preventDefault();
+    console.log(e.preventDefault(), "prev");
 
     // try {
     await axios
@@ -32,10 +34,10 @@ export default function Login() {
       .then((response) => {
         console.log(response.data);
 
-        // const setItem = () => {
-        //   localStorage.setItem("loginToken", response.data.accessToken);
-        // };
-        // setItem();
+        const setItem = () => {
+          localStorage.setItem("loginToken", response.data.accessToken);
+        };
+        setItem();
 
         if (
           response.data !== "User not found" &&
@@ -85,7 +87,7 @@ export default function Login() {
       </Stack>
 
       <Button
-        type="submit"
+        // type="submit"
         variant="contained"
         style={{
           backgroundColor: "#18BA51",
@@ -98,18 +100,19 @@ export default function Login() {
       </Button>
       {/* </form> */}
       <Typography>Эсвэл</Typography>
-
-      <Button
-        type="submit"
-        variant="outlined"
-        style={{
-          //   backgroundColor: "#18BA51",
-          width: "379px",
-          height: "45px",
-        }}
-      >
-        Бүртгүүлэх
-      </Button>
+      <Link href={`/signUp`}>
+        <Button
+          type="submit"
+          variant="outlined"
+          style={{
+            //   backgroundColor: "#18BA51",
+            width: "379px",
+            height: "45px",
+          }}
+        >
+          Бүртгүүлэх
+        </Button>
+      </Link>
     </Stack>
   );
 }

@@ -25,31 +25,31 @@ export default function Login() {
   const handleClicked = async (e: any) => {
     e.preventDefault();
 
-    try {
-      await axios
-        .post("http://localhost:8000/login", userData)
+    // try {
+    await axios
+      .post("http://localhost:8000/login", userData)
 
-        .then((response) => {
-          console.log(response.data);
+      .then((response) => {
+        console.log(response.data);
 
-          const setItem = () => {
-            localStorage.setItem("loginToken", response.data.accessToken);
-          };
-          setItem();
+        // const setItem = () => {
+        //   localStorage.setItem("loginToken", response.data.accessToken);
+        // };
+        // setItem();
 
-          if (
-            response.data !== "User not found" &&
-            response.data !== "Email or password is wrong"
-          ) {
-            useRouter().push("/signUp");
-          } else {
-            setError(response.data);
-          }
-        });
-    } catch (error: any) {
-      // alert(error.response.data);
-      setError(error.response.data);
-    }
+        if (
+          response.data !== "User not found" &&
+          response.data !== "Email or password is wrong"
+        ) {
+          useRouter().push("/signUp");
+        } else {
+          setError(response.data);
+        }
+      });
+    // } catch (error: any) {
+    // alert(error.response.data);
+    // setError(error.response.data);
+    // }
   };
 
   return (

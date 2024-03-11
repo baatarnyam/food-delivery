@@ -10,16 +10,46 @@ import Checkbox from "@mui/material/Checkbox";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import axios from "axios";
-import { useFormControl } from "@mui/material/FormControl";
 
 export default function SignUp() {
   const label = { inputProps: { "aria-label": "Checkbox demo" } };
   const [listen, setListen] = useState(false);
   const [checked, setChecked] = useState(false);
+  const [userData, setUserData] = useState({});
+  const [error, setError] = useState("");
 
-  const handleClicked = () => {
-    setChecked(checked);
-    console.log("clicked");
+  const handleChange = (e: any) => {
+    const { name, value } = e.target;
+
+    setUserData({
+      ...userData,
+      [name]: value,
+    });
+    console.log(userData);
+  };
+
+  const handleClicked = async (e: any) => {
+    e.preventDefault();
+    // if (userData.password !== userData.RePassword) {
+    //   setError("Password and Re-Password does not match");
+    //   return;
+    // }
+
+    // try {
+    await axios
+      .post("http://localhost:8000/signUp", userData)
+      .then((response) => {
+        // console.log(response.data);
+
+        if (response.data !== "User already existed") {
+          useRouter().push("/login");
+        }
+      });
+    // } catch (error: any) {
+    // setError(error.response.data);
+    // }
+    // setChecked(checked);
+    // console.log("clicked");
   };
 
   return (
@@ -68,6 +98,7 @@ export default function SignUp() {
             type="text"
             height="42px"
             name="name"
+            onChange={handleChange}
           />
         </Box>
 
@@ -87,6 +118,7 @@ export default function SignUp() {
             type="email"
             height="42px"
             name="email"
+            onChange={handleChange}
           />
         </Box>
 
@@ -101,7 +133,12 @@ export default function SignUp() {
           <Typography sx={{ fontSize: "14px", fontWeight: "400" }}>
             Утас
           </Typography>
-          <PhoneNumber name="phone" />
+          <PhoneNumber
+            name="phone"
+            onChange={handleChange}
+            setPhoneNumber="value"
+            phoneNumber="value"
+          />
         </Box>
 
         <Box
@@ -115,7 +152,11 @@ export default function SignUp() {
           <Typography sx={{ fontSize: "14px", fontWeight: "400" }}>
             Нууц үг
           </Typography>
-          <Password placeholder="Нууц үгээ оруулна уу" name="password" />
+          <Password
+            placeholder="Нууц үгээ оруулна уу"
+            name="password"
+            onChange={handleChange}
+          />
         </Box>
 
         <Box
@@ -129,7 +170,11 @@ export default function SignUp() {
           <Typography sx={{ fontSize: "14px", fontWeight: "400" }}>
             Нууц үг давтах
           </Typography>
-          <Password placeholder="Нууц үгээ оруулна уу" name="RePassword" />
+          <Password
+            placeholder="Нууц үгээ оруулна уу"
+            name="RePassword"
+            onChange={handleChange}
+          />
         </Box>
 
         <Box

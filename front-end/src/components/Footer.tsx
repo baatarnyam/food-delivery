@@ -6,7 +6,7 @@ export default function Footer() {
     <Box
       sx={{
         width: "full",
-        height: "100px",
+        height: "545px",
         border: "solid",
         marginTop: "74px",
       }}

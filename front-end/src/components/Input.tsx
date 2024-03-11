@@ -1,7 +1,7 @@
 import { InputBase, InputLabel } from "@mui/material";
 
 export default function Input(props: any) {
-  const { placeholder, type, onChange, height } = props;
+  const { placeholder, type, onChange, height, name } = props;
 
   return (
     <InputBase
@@ -14,6 +14,7 @@ export default function Input(props: any) {
       }}
       type={type}
       placeholder={placeholder}
+      name={name}
       onChange={onChange}
     />
   );

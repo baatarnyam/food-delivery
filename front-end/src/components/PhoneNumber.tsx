@@ -3,13 +3,13 @@ import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 
 const PhoneNumberValidation = (props: any) => {
-  const { name, onchange, phoneNumber, setPhoneNumber } = props;
-  // const [phoneNumber, setPhoneNumber] = useState("");
+  const { name, onchange } = props;
+  const [phoneNumber, setPhoneNumber] = useState("");
   // const [name, setName] = useState();
   const [valid, setValid] = useState(true);
 
   const handleNumber = (value: any) => {
-    // setPhoneNumber(value);
+    setPhoneNumber(value);
 
     setValid(validatePhoneNumber(value));
   };

@@ -8,11 +8,10 @@ import PhoneNumber from "./PhoneNumber";
 import Button from "@mui/material/Button";
 import Checkbox from "@mui/material/Checkbox";
 import { useState, useEffect } from "react";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import axios from "axios";
 
 export default function SignUp() {
-  const label = { inputProps: { "aria-label": "Checkbox demo" } };
   const [listen, setListen] = useState(false);
   const [checked, setChecked] = useState(false);
   const [userData, setUserData] = useState({});
@@ -27,6 +26,7 @@ export default function SignUp() {
     });
     console.log(userData);
   };
+  const router = useRouter();
 
   const handleClicked = async (e: any) => {
     e.preventDefault();
@@ -35,19 +35,19 @@ export default function SignUp() {
     //   return;
     // }
 
-    // try {
-    await axios
-      .post("http://localhost:8000/signUp", userData)
-      .then((response) => {
-        // console.log(response.data);
+    try {
+      await axios
+        .post("http://localhost:8000/signUp", userData)
+        .then((response) => {
+          // console.log(response.data);
 
-        if (response.data !== "User already existed") {
-          useRouter().push("/login");
-        }
-      });
-    // } catch (error: any) {
-    // setError(error.response.data);
-    // }
+          if (response.data !== "User already existed") {
+            router.push("/login");
+          }
+        });
+    } catch (error: any) {
+      setError(error.response.data);
+    }
     // setChecked(checked);
     // console.log("clicked");
   };
@@ -65,6 +65,8 @@ export default function SignUp() {
         alignItems: "center",
         gap: "40px",
         margin: "auto",
+        marginBottom: "80px",
+        marginTop: "75px",
       }}
     >
       <Typography sx={{ fontSize: "28px", fontWeight: "700" }}>
@@ -197,9 +199,7 @@ export default function SignUp() {
             }}
           >
             <Checkbox
-              {...label}
               onChange={(e) => {
-                // console.log(e.target.checked);
                 setListen(!listen);
               }}
             />

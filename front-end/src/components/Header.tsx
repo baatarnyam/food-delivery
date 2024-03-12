@@ -19,13 +19,11 @@ export default function Header() {
       sx={{
         width: "1258px",
         height: "57px",
-
         paddingInline: "24px",
         display: "flex",
         justifyContent: "space-between",
         alignItems: "center",
         margin: "auto",
-        marginBottom: "74px",
       }}
     >
       <Box

@@ -16,12 +16,13 @@ export const loginUserQuery = async (req: Request, res: Response) => {
     throw new Error("User not found");
   }
 
-  const isPasswordTrue = await compareHash(password, user.password);
+  const isPasswordTrue = compareHash(password, user.password);
+  console.log(isPasswordTrue);
   if (!isPasswordTrue) {
     throw new Error("Email or password is wrong");
   }
 
   const token = await tokenGenerate(user._id.toString());
   //   console.log(token);
-  return token;
+  return { user, token };
 };

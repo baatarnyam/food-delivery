@@ -6,7 +6,7 @@ import Input from "./Input";
 import Password from "./Password";
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 
 export default function Login() {
@@ -20,38 +20,39 @@ export default function Login() {
       ...userData,
       [name]: value,
     });
-    console.log(userData);
+    // console.log(userData);
   };
+  const router = useRouter();
 
   const handleClicked = async (e: any) => {
     e.preventDefault();
-    console.log(e.preventDefault(), "prev");
 
-    // try {
-    await axios
-      .post("http://localhost:8000/login", userData)
+    try {
+      await axios
+        .post("http://localhost:8000/login", userData)
 
-      .then((response) => {
-        console.log(response.data);
+        .then((response) => {
+          // console.log(response.data);
+          // console.log(response.data.user);
 
-        const setItem = () => {
-          localStorage.setItem("loginToken", response.data.accessToken);
-        };
-        setItem();
+          const setItem = () => {
+            localStorage.setItem("Token", response.data.token);
+          };
+          setItem();
 
-        if (
-          response.data !== "User not found" &&
-          response.data !== "Email or password is wrong"
-        ) {
-          useRouter().push("/signUp");
-        } else {
-          setError(response.data);
-        }
-      });
-    // } catch (error: any) {
-    // alert(error.response.data);
-    // setError(error.response.data);
-    // }
+          if (
+            response.data.user !== "User not found" &&
+            response.data.user !== "Email or password is wrong"
+          ) {
+            router.push("/home");
+          } else {
+            setError(response.data.user);
+          }
+        });
+    } catch (error: any) {
+      // alert(error.response.data);
+      setError(error.response.data.user);
+    }
   };
 
   return (
@@ -59,11 +60,12 @@ export default function Login() {
       sx={{
         width: "448px",
         height: "550px",
-        border: "solid",
         margin: "auto",
         padding: "32px",
         alignItems: "center",
         gap: "48px",
+        marginTop: "111px",
+        marginBottom: "75px",
       }}
     >
       <Typography
@@ -71,8 +73,8 @@ export default function Login() {
       >
         Нэвтрэх
       </Typography>
-      {/* <form onSubmit={handleChange} action=""> */}
       <Input
+        name="email"
         placeholder="И-мэйл хаягаа оруулна уу"
         type="email"
         height="42px"
@@ -80,12 +82,15 @@ export default function Login() {
       />
 
       <Stack sx={{ alignItems: "end" }}>
-        <Password placeholder="Нууц үгээ оруулна уу" onChange={handleChange} />
+        <Password
+          name="password"
+          placeholder="Нууц үгээ оруулна уу"
+          onChange={handleChange}
+        />
         <Button variant="text" sx={{ fontSize: "14px" }}>
           Нууц үг сэргээх
         </Button>
       </Stack>
-
       <Button
         // type="submit"
         variant="contained"
@@ -98,7 +103,7 @@ export default function Login() {
       >
         Нэвтрэх
       </Button>
-      {/* </form> */}
+
       <Typography>Эсвэл</Typography>
       <Link href={`/signUp`}>
         <Button

@@ -87,9 +87,11 @@ export default function Login() {
           placeholder="Нууц үгээ оруулна уу"
           onChange={handleChange}
         />
-        <Button variant="text" sx={{ fontSize: "14px" }}>
-          Нууц үг сэргээх
-        </Button>
+        <Link href={"./forgetPassword"}>
+          <Button variant="text" sx={{ fontSize: "14px" }}>
+            Нууц үг сэргээх
+          </Button>
+        </Link>
       </Stack>
       <Button
         // type="submit"

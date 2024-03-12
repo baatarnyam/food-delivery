@@ -12,8 +12,8 @@ export default function Footer() {
   return (
     <Box
       sx={{
-        width: "1440px",
-        height: "500px",
+        width: "1400px",
+        height: "485px",
         margin: "auto",
         display: "flex",
         alignItems: "center",

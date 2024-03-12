@@ -7,7 +7,7 @@ export default function Input(props: any) {
     <InputBase
       sx={{
         width: "380px",
-        height: { height },
+        height: height,
         bgcolor: "#ECEDF0",
         borderRadius: "4px",
         paddingInline: "8px",

@@ -27,32 +27,32 @@ export default function Login() {
   const handleClicked = async (e: any) => {
     e.preventDefault();
 
-    try {
-      await axios
-        .post("http://localhost:8000/login", userData)
+    // try {
+    await axios
+      .post("http://localhost:8000/login", userData)
 
-        .then((response) => {
-          // console.log(response.data);
-          // console.log(response.data.user);
+      .then((response) => {
+        console.log(response.data);
+        // console.log(response.data.user);
 
-          const setItem = () => {
-            localStorage.setItem("Token", response.data.token);
-          };
-          setItem();
+        const setItem = () => {
+          localStorage.setItem("Token", response.data.token);
+        };
+        setItem();
 
-          if (
-            response.data.user !== "User not found" &&
-            response.data.user !== "Email or password is wrong"
-          ) {
-            router.push("/home");
-          } else {
-            setError(response.data.user);
-          }
-        });
-    } catch (error: any) {
-      // alert(error.response.data);
-      setError(error.response.data.user);
-    }
+        if (
+          response.data.user !== "User not found" &&
+          response.data.user !== "Email or password is wrong"
+        ) {
+          router.push("/home");
+        } else {
+          setError(response.data.user);
+        }
+      });
+    // } catch (error: any) {
+    // alert(error.response.data);
+    // setError(error.response.data.user);
+    // }
   };
 
   return (

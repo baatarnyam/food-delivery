@@ -3,15 +3,15 @@ import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 
 const PhoneNumberValidation = (props: any) => {
-  const { name, onchange } = props;
+  const { onchange, num } = props;
   const [phoneNumber, setPhoneNumber] = useState("");
-  // const [name, setName] = useState();
   const [valid, setValid] = useState(true);
 
-  const handleNumber = (value: any) => {
-    setPhoneNumber(value);
+  const handleChange = (number: string) => {
+    setPhoneNumber(number);
+    // console.log(number);
 
-    setValid(validatePhoneNumber(value));
+    setValid(validatePhoneNumber(number));
   };
 
   const validatePhoneNumber = (phoneNumber: string) => {
@@ -26,9 +26,8 @@ const PhoneNumberValidation = (props: any) => {
         <PhoneInput
           country={"mn"}
           value={phoneNumber}
-          onChange={handleNumber}
+          onChange={handleChange}
           inputProps={{
-            name: { name },
             required: true,
           }}
           inputStyle={{

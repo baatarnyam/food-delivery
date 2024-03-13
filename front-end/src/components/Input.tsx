@@ -8,7 +8,7 @@ export default function Input(props: any) {
       sx={{
         width: "380px",
         height: height,
-        bgcolor: "#ECEDF0",
+        bgcolor: "#F7F7F8",
         borderRadius: "4px",
         paddingInline: "8px",
       }}

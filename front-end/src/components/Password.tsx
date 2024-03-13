@@ -17,7 +17,7 @@ export default function Password(props: any) {
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
   return (
-    <FormControl sx={{ width: "380px", bgcolor: "#ECEDF0" }}>
+    <FormControl sx={{ width: "380px", bgcolor: "#F7F7F8" }}>
       <OutlinedInput
         name={name}
         onChange={onChange}

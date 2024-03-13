@@ -4,7 +4,7 @@ import cors from "cors";
 import { connectDb } from "./db";
 import { userRouter } from "./router";
 
-const port = process.env.PORT;
+// const port = process.env.PORT;
 
 const app = express();
 app.use(cors());
@@ -13,6 +13,6 @@ connectDb();
 
 app.use(userRouter);
 
-app.listen(port, () => {
-  console.log(`http://localhost:${port}`);
+app.listen(8000, () => {
+  console.log(`http://localhost:8000`);
 });

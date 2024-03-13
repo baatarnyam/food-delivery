@@ -30,7 +30,7 @@ export const forgorPasswordQuery = async (req: Request, res: Response) => {
     from: "bbaatarnya@gmail.com",
     to: "baatarnyamganbold@gmail.com",
     subject: "hello i'm bn",
-    text: "Hello this is your new password",
+    text: "This is your new password",
   };
 
   await transporter.sendMail(options);
@@ -45,3 +45,7 @@ export const forgorPasswordQuery = async (req: Request, res: Response) => {
 
   return "success";
 };
+
+// 1. 4 orontoi too generate hiih
+// 2. inputees orj ireh too generate hiisen too taarch bga esehiig shalgah
+// 3. password iig update hiih

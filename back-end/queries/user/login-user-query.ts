@@ -17,7 +17,7 @@ export const loginUserQuery = async (req: Request, res: Response) => {
   }
 
   const isPasswordTrue = compareHash(password, user.password);
-  console.log(isPasswordTrue);
+  // console.log(isPasswordTrue);
   if (!isPasswordTrue) {
     throw new Error("Email or password is wrong");
   }

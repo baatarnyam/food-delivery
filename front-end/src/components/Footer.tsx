@@ -1,12 +1,11 @@
 "use client";
 
 import React from "react";
-import { Box, ListItem, Stack, Typography } from "@mui/material";
+import { Box, Divider, ListItem, Stack, Typography } from "@mui/material";
 import Link from "@mui/material/Link";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import TwitterIcon from "@mui/icons-material/Twitter";
-import Divider from "@mui/material/Divider";
 
 export default function Footer() {
   return (
@@ -114,7 +113,7 @@ export default function Footer() {
           <TwitterIcon sx={{ width: "40px", height: "40px", color: "white" }} />
         </Box>
 
-        <Divider variant="fullWidth" component="hr" />
+        <Divider sx={{ borderColor: "white", width: "1200px" }} />
 
         <Stack
           sx={{

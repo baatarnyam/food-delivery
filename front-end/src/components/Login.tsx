@@ -11,7 +11,7 @@ import Link from "next/link";
 
 export default function Login() {
   const [userData, setUserData] = useState({});
-  const [error, setError] = useState();
+  const [loginError, setLoginError] = useState();
 
   const handleChange = (e: any) => {
     const { name, value } = e.target;
@@ -27,32 +27,32 @@ export default function Login() {
   const handleClicked = async (e: any) => {
     e.preventDefault();
 
-    // try {
-    await axios
-      .post("http://localhost:8000/login", userData)
+    try {
+      await axios
+        .post("http://localhost:8000/login", userData)
 
-      .then((response) => {
-        console.log(response.data);
-        // console.log(response.data.user);
+        .then((response) => {
+          // console.log(response.data)
+          // console.log(response.data.user);
 
-        const setItem = () => {
-          localStorage.setItem("Token", response.data.token);
-        };
-        setItem();
+          const setItem = () => {
+            localStorage.setItem("Token", response.data.token);
+          };
+          setItem();
 
-        if (
-          response.data.user !== "User not found" &&
-          response.data.user !== "Email or password is wrong"
-        ) {
-          router.push("/home");
-        } else {
-          setError(response.data.user);
-        }
-      });
-    // } catch (error: any) {
-    // alert(error.response.data);
-    // setError(error.response.data.user);
-    // }
+          if (
+            response.data !== "User not found" &&
+            response.data !== "Email or password is wrong"
+          ) {
+            router.push("/home");
+          } else {
+            setLoginError(response.data);
+          }
+        });
+    } catch (error: any) {
+      // alert(error.response.data);
+      setLoginError(error.response.data);
+    }
   };
 
   return (
@@ -87,12 +87,20 @@ export default function Login() {
           placeholder="Нууц үгээ оруулна уу"
           onChange={handleChange}
         />
+
+        {loginError && (
+          <Typography sx={{ color: "red", fontSize: "12px" }}>
+            {loginError}
+          </Typography>
+        )}
+
         <Link href={"./forgetPassword"}>
           <Button variant="text" sx={{ fontSize: "14px" }}>
             Нууц үг сэргээх
           </Button>
         </Link>
       </Stack>
+
       <Button
         // type="submit"
         variant="contained"

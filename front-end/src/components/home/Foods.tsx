@@ -1,13 +1,8 @@
-import { Box, Stack, Typography } from "@mui/material";
-import React from "react";
+"use client";
 
-const foodFields = [
-  {
-    img: "",
-    name: "",
-    price: "",
-  },
-];
+import { Box, Button, Stack, Typography } from "@mui/material";
+import axios from "axios";
+import React, { useState } from "react";
 
 export default function Foods() {
   return (
@@ -21,22 +16,29 @@ export default function Foods() {
         border: "solid",
       }}
     >
-      <Stack sx={{ width: "286px", height: "256px", gap: "14px" }}>
+      <Stack
+        sx={{ width: "286px", height: "256px", gap: "14px", border: "solid" }}
+      >
         <Box
           sx={{
             width: "282px",
             height: "186px",
             borderRadius: "16px",
-            border: "solid",
             overflow: "hidden",
             objectFit: "cover",
           }}
         >
           {" "}
-          <img src="./homeFoodLogo.png" alt="" width="full" height="full" />
+          <img src="./pizza.png" alt="" width="full" height="full" />
         </Box>
 
-        <Stack sx={{ height: "56px", gap: "2px" }}>
+        <Stack
+          sx={{
+            height: "56px",
+            gap: "2px",
+            paddingLeft: "10px",
+          }}
+        >
           <Typography
             sx={{ color: "black", fontSize: "18px", fontWeight: "600" }}
           >

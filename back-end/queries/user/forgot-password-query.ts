@@ -10,11 +10,18 @@ const isEmailValid = async (email: string) => {
 export const forgorPasswordQuery = async (req: Request, res: Response) => {
   const { email } = req.body;
 
+  // const randomNumber = Math.floor(Math.random() * 10000);
+  // console.log(randomNumber);
+
+  const randomFourDigitNumber = Math.floor(1000 + Math.random() * 9000);
+  console.log(randomFourDigitNumber);
+
   const isUser = await isEmailValid(email);
 
   if (!isUser) {
-    throw new Error("Email not found");
+    throw new Error("Email is wrong");
   }
+
   const transporter = nodemailer.createTransport({
     service: "Gmail",
     host: "smtp.gmail.com",
@@ -29,8 +36,8 @@ export const forgorPasswordQuery = async (req: Request, res: Response) => {
   const options = {
     from: "bbaatarnya@gmail.com",
     to: "baatarnyamganbold@gmail.com",
-    subject: "hello i'm bn",
-    text: "This is your new password",
+    subject: "Hello it's your One time password",
+    Number: randomFourDigitNumber,
   };
 
   await transporter.sendMail(options);

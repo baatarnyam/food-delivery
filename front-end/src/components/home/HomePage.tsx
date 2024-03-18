@@ -1,10 +1,31 @@
 import React from "react";
-import { Box } from "@mui/material";
+import { Box, Button } from "@mui/material";
 import HomePageHeader from "./HomePageHeader";
 import FoodController from "./FoodController";
 import Foods from "./Foods";
+import axios from "axios";
 
-export default function HomePage() {
+type FoodType = {
+  _id: string;
+  name: string;
+  image: string;
+  ingredients: string;
+  price: string;
+};
+
+export const GetAllFoods = async () => {
+  try {
+    const { data } = await axios.get<FoodType[]>("http://localhost:8000/foods");
+
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export default async function HomePage() {
+  const data: any = await GetAllFoods();
+
   return (
     <Box
       sx={{
@@ -21,7 +42,7 @@ export default function HomePage() {
     >
       <HomePageHeader />
       <FoodController />
-      <Foods />
+      <Foods data={data} />
     </Box>
   );
 }

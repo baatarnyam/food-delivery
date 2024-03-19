@@ -39,8 +39,7 @@ export default function Search(props: Foods) {
                 }}
               >
                 {" "}
-                <img src={el.image} width="full" height="full"/>
-                
+                <img src={el.image} width="full" height="full" />
               </Box>
 
               <Stack

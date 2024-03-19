@@ -5,16 +5,9 @@ import FoodController from "./FoodController";
 import Foods from "./Foods";
 import axios from "axios";
 
-// type FoodType = {
-//   _id: string;
-//   name: string;
-//   image: string;
-//   ingredients: string;
-//   price: string;
-// };
-
 export const GetAllFoods = async () => {
   try {
+    // const data = await fetch("http://localhost:8000/foods");
     const { data } = await axios.post<FoodType[]>(
       "http://localhost:8000/foods"
     );
@@ -38,7 +31,7 @@ export default async function HomePage() {
         alignItems: "center",
         gap: "120px",
         margin: "auto",
-        marginTop: "75px",
+        marginTop: "50px",
         marginBottom: "122px",
       }}
     >

@@ -4,8 +4,6 @@ import React from "react";
 import { Box, Button, Grid, Stack, Typography } from "@mui/material";
 import { GetAllFoods } from "./HomePage";
 
-
-
 type Foods = {
   data: FoodType[];
 };
@@ -25,7 +23,10 @@ export default function Foods(props: Foods) {
       }}
     >
       {data?.slice(0).map((el: FoodType, index: number) => (
-        <Stack sx={{ width: "286px", height: "256px", gap: "14px" }}>
+        <Stack
+          key={index}
+          sx={{ width: "286px", height: "256px", gap: "14px" }}
+        >
           <Box
             sx={{
               width: "282px",

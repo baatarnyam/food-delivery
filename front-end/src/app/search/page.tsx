@@ -30,6 +30,12 @@ const getFoods = async () => {
   // console.log(body, "body");
 
   try {
+    // const response = await fetch("http://localhost:8000/foods", {
+    //   cache: "no-store",
+    //   body,
+    // });
+    // console.log(response, "data bnu");
+
     const { data } = await axios.post<FoodType[]>(
       "http://localhost:8000/foods",
       body
@@ -41,8 +47,8 @@ const getFoods = async () => {
 };
 
 export default async function searchPage() {
-  const data: FoodType[] | undefined = await getFoods();
-  // console.log(data, "data");
+  const data = await getFoods();
+  // console.log(data, "response bnu");
 
   return (
     <Stack

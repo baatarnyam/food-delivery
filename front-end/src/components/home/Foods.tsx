@@ -4,13 +4,13 @@ import { Box, Button, Stack, Typography } from "@mui/material";
 import React, { useState } from "react";
 import { GetAllFoods } from "./HomePage";
 
-type FoodType = {
-  // _id: string;
-  name: string;
-  image: string;
-  ingredients: string;
-  price: string;
-};
+// type FoodType = {
+//   _id: string;
+//   name: string;
+//   image: string;
+//   ingredients: string;
+//   price: string;
+// };
 
 type Foods = {
   data: FoodType[];
@@ -27,7 +27,6 @@ export default function Foods(props: Foods) {
         height: "1344px",
         display: "flex",
         flexWrap: "wrap",
-        // flexDirection: "column",
         gap: "17px",
       }}
     >

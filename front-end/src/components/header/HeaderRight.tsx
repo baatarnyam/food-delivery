@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import {
   Box,
@@ -10,8 +12,24 @@ import {
 import SearchIcon from "@mui/icons-material/Search";
 import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
 import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
+import { useContext } from "react";
+import { SearchContext } from "../provider/SearchProvider";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import Skeleton from "@mui/material";
 
 export default function HeaderRight() {
+  const { search, setSearch } = useContext(SearchContext);
+  const { push } = useRouter();
+
+  const handlerSearch = () => {
+    if (search === "") {
+      push("/home");
+    } else {
+      push(`/search?id=${search}`);
+    }
+  };
+
   return (
     <Box
       sx={{
@@ -38,10 +56,15 @@ export default function HeaderRight() {
           type="button"
           sx={{ p: "5px", width: "24px", height: "24px", fontWeight: "800" }}
           aria-label="search"
+          onClick={handlerSearch}
         >
           <SearchIcon />
         </IconButton>
-        <InputBase sx={{ ml: 1, flex: 1 }} placeholder="Хайх" />
+        <InputBase
+          sx={{ ml: 1, flex: 1 }}
+          placeholder="Хайх"
+          onChange={(e) => setSearch(e.target.value)}
+        />
       </Paper>
       <Button
         sx={{

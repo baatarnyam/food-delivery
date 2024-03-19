@@ -5,17 +5,19 @@ import FoodController from "./FoodController";
 import Foods from "./Foods";
 import axios from "axios";
 
-type FoodType = {
-  _id: string;
-  name: string;
-  image: string;
-  ingredients: string;
-  price: string;
-};
+// type FoodType = {
+//   _id: string;
+//   name: string;
+//   image: string;
+//   ingredients: string;
+//   price: string;
+// };
 
 export const GetAllFoods = async () => {
   try {
-    const { data } = await axios.get<FoodType[]>("http://localhost:8000/foods");
+    const { data } = await axios.post<FoodType[]>(
+      "http://localhost:8000/foods"
+    );
 
     return data;
   } catch (error) {

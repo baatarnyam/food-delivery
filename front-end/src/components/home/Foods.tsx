@@ -1,16 +1,10 @@
 "use client";
 
-import { Box, Button, Stack, Typography } from "@mui/material";
-import React, { useState } from "react";
+import React from "react";
+import { Box, Button, Grid, Stack, Typography } from "@mui/material";
 import { GetAllFoods } from "./HomePage";
 
-// type FoodType = {
-//   _id: string;
-//   name: string;
-//   image: string;
-//   ingredients: string;
-//   price: string;
-// };
+
 
 type Foods = {
   data: FoodType[];

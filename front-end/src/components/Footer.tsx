@@ -54,7 +54,7 @@ export default function Footer() {
           // onClick={preventDefault}
         >
           <Link
-            href="#"
+            href="/home"
             underline="always"
             sx={{ color: "white", fontSize: "16px" }}
           >
@@ -68,7 +68,7 @@ export default function Footer() {
             Холбоо барих
           </Link>
           <Link
-            href="#"
+            href="/menu"
             underline="always"
             sx={{ color: "white", fontSize: "16px" }}
           >

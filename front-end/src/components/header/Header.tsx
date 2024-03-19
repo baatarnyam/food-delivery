@@ -1,9 +1,26 @@
-import React from "react";
+'use client'
 
+import  { useState } from "react";
 import { Box, Button } from "@mui/material";
 import HeaderRight from "./HeaderRight";
+import { useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
+
+
+
 
 export default function Header() {
+  // const [color, sestColor] = useState(false)
+  const {push} = useRouter()
+  const pathname = usePathname()
+
+  const handleHome = () => {
+    push("/home")
+  }
+
+  const handleMenu = () => {
+    push("/menu")
+  }
   return (
     <Box
       sx={{
@@ -27,6 +44,7 @@ export default function Header() {
       >
         <img src="/Logo.png" width={41} height={41} />
         <Button
+        onClick={handleHome}
           sx={{
             fontSize: "14px",
             fontWeight: "700",
@@ -35,14 +53,16 @@ export default function Header() {
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            color: "black",
+            color: `${pathname === "/home" ? "#18BA51" : "black"}`,
           }}
           variant="text"
+          
         >
           НҮҮР
         </Button>
 
         <Button
+        onClick={handleMenu}
           sx={{
             fontSize: "14px",
             fontWeight: "700",
@@ -51,7 +71,7 @@ export default function Header() {
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            color: "black",
+            color: `${pathname === "/menu" ? "#18BA51" : "black"}`,
           }}
         >
           ХООЛНЫ ЦЭС

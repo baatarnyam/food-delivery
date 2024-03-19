@@ -15,7 +15,7 @@ export default function Search(props: Foods) {
 
   return (
     <div>
-      {data.length > 0 ? (
+      {data?.length > 0 ? (
         <Stack
           direction="row"
           sx={{
@@ -39,7 +39,8 @@ export default function Search(props: Foods) {
                 }}
               >
                 {" "}
-                {el.image}
+                <img src={el.image} width="full" height="full"/>
+                
               </Box>
 
               <Stack

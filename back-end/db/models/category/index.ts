@@ -9,7 +9,7 @@ export type CategoryModelType = {
 const CategorySchema = new Schema<CategoryModelType>(
   {
     name: { type: String, require: true },
-    foodId: { type: [Schema.Types.ObjectId], require: true },
+    foodId: { type: [Schema.Types.ObjectId], ref: "Foods", require: true },
   },
   { timestamps: true }
 );

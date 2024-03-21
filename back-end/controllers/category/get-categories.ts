@@ -1,10 +1,10 @@
-import { Response, Request } from "express";
+import { Response } from "express";
 import { getCategoriesQuery } from "../../queries";
 
-export const GetCategoriesController = async (res: Response, req: Request) => {
+export const getCategoriesController = async (res: Response) => {
   try {
     const result = await getCategoriesQuery();
-    res.send(result);
+    res.status(200).send(result);
   } catch (error: any) {
     res.status(400).send(error.message);
   }

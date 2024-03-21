@@ -3,10 +3,9 @@ import { CategoryModel } from "../../db";
 export const getCategoriesQuery = async () => {
   const categories = await CategoryModel.find();
 
-  const newCategories = categories.map((item) => {
-    return { name: item.name, id: item._id };
+  const newCategories = categories.map(({ name, _id }) => {
+    return { name, id: _id };
   });
-  // console.log(newCategories);
 
   return newCategories;
 };

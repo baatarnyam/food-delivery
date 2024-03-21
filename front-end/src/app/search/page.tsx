@@ -41,13 +41,14 @@ const getFoods = async () => {
       body
     );
     return data;
-  } catch (error) {
-    console.log(error);
+  } catch (error: any) {
+    console.log(error.message);
   }
 };
 
 export default async function searchPage() {
-  const data = await getFoods();
+  const data: FoodType[] | undefined = await getFoods();
+  // const data = await getFoods();
   // console.log(data, "response bnu");
 
   return (

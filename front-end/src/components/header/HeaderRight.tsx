@@ -14,12 +14,13 @@ import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
 import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
 import { useContext } from "react";
 import { SearchContext } from "../provider/SearchProvider";
-import { useState } from "react";
 import { useRouter } from "next/navigation";
-import Skeleton from "@mui/material";
+import Link from "next/link";
+import { UserContext } from "../provider/UserProvider";
 
 export default function HeaderRight() {
   const { search, setSearch } = useContext(SearchContext);
+  const { isLogin } = useContext(UserContext);
   const { push } = useRouter();
 
   const handlerSearch = () => {
@@ -27,6 +28,14 @@ export default function HeaderRight() {
       push("/home");
     } else {
       push(`/search?id=${search}`);
+    }
+  };
+
+  const handleClick = () => {
+    if (!isLogin) {
+      push("/login");
+    } else {
+      console.log("user profile");
     }
   };
 
@@ -85,22 +94,48 @@ export default function HeaderRight() {
           Сагс
         </Typography>
       </Button>
-      <Button
-        sx={{
-          width: "102px",
-          height: "40px",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          gap: "8px",
-          color: "black",
-        }}
-      >
-        <PersonOutlineIcon sx={{ width: "24px", height: "24px" }} />
-        <Typography sx={{ fontSize: "14px", fontWeight: "700" }}>
-          Нэвтрэх
-        </Typography>
-      </Button>
+
+      {isLogin ? (
+        <Button
+          sx={{
+            width: "102px",
+            height: "40px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: "8px",
+            color: "black",
+          }}
+          onClick={handleClick}
+        >
+          <PersonOutlineIcon
+            sx={{ width: "24px", height: "24px", color: "#18BA51" }}
+          />
+          <Typography
+            sx={{ fontSize: "14px", fontWeight: "700", color: "#18BA51" }}
+          >
+            Хэрэглэгч
+          </Typography>
+        </Button>
+      ) : (
+        <Button
+          sx={{
+            width: "102px",
+            height: "40px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: "8px",
+            color: "black",
+          }}
+          onClick={handleClick}
+        >
+          <PersonOutlineIcon sx={{ width: "24px", height: "24px" }} />
+          <Typography sx={{ fontSize: "14px", fontWeight: "700" }}>
+            Нэвтрэх
+          </Typography>
+        </Button>
+      )}
     </Box>
   );
 }

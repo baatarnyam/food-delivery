@@ -13,6 +13,8 @@ export const compareHash = (password: string, hashedPassword: string) => {
 };
 
 export const tokenGenerate = async (userId: string) => {
-  const token = await jwt.sign({ userId }, "secter", { expiresIn: "4h" });
+  const token = await jwt.sign({ userId }, "defaultSecret", {
+    expiresIn: "1h",
+  });
   return token;
 };

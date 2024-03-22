@@ -9,7 +9,6 @@ const getUserById = async (id: string) => {
 
 export const checkToken = async (req: Request, res: Response) => {
   const token: any = req.headers.authorization?.split(" ")[1];
-  //   console.log(token, "query token");
 
   try {
     if (!token) {
@@ -17,19 +16,14 @@ export const checkToken = async (req: Request, res: Response) => {
     }
 
     const data: any = jwt.decode(token);
-    // console.log(data, "decode token");
 
-    const user = await getUserById(data.userId);
+    const user = await getUserById(data?.userId);
 
     const tokenVerify = jwt.verify(
       token,
       process.env.JWT_SECRET || "defaultSecret"
     );
-    if (!tokenVerify) {
-      throw new Error("Token is invalid");
-    } else {
-      return { tokenVerify, user };
-    }
+    return { tokenVerify, user };
   } catch (err: any) {
     throw new Error(err.message);
   }

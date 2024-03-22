@@ -7,14 +7,11 @@ import axios from "axios";
 
 export const GetAllFoods = async () => {
   try {
-    // const data = await fetch("http://localhost:8000/foods");
-    const { data } = await axios.post<FoodType[]>(
-      "http://localhost:8000/foods"
-    );
+    const { data } = await axios.get<FoodType[]>("http://localhost:8000/foods");
 
     return data;
-  } catch (error) {
-    console.log(error);
+  } catch (error: any) {
+    console.log(error.message, "get all food");
   }
 };
 

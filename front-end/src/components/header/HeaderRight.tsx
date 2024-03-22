@@ -15,7 +15,6 @@ import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
 import { useContext } from "react";
 import { SearchContext } from "../provider/SearchProvider";
 import { useRouter } from "next/navigation";
-import Link from "next/link";
 import { UserContext } from "../provider/UserProvider";
 
 export default function HeaderRight() {
@@ -107,6 +106,7 @@ export default function HeaderRight() {
             color: "black",
           }}
           onClick={handleClick}
+          // onChange={(e) => setSearch(e.target.value)}
         >
           <PersonOutlineIcon
             sx={{ width: "24px", height: "24px", color: "#18BA51" }}

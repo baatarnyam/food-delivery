@@ -1,7 +1,6 @@
 "use client";
 
 import { Box, Button, Stack, Typography } from "@mui/material";
-import { Staatliches } from "next/font/google";
 import Input from "./Input";
 import Password from "./Password";
 import axios from "axios";
@@ -28,29 +27,15 @@ export default function Login() {
     e.preventDefault();
 
     try {
-      await axios
-        .post("http://localhost:8000/login", userData)
+      const { data } = await axios.post(
+        "http://localhost:8000/login",
+        userData
+      );
 
-        .then((response) => {
-          // console.log(response.data)
-          // console.log(response.data.user);
+      localStorage.setItem("Token", data.token);
 
-          const setItem = () => {
-            localStorage.setItem("Token", response.data.token);
-          };
-          setItem();
-
-          if (
-            response.data !== "User not found" &&
-            response.data !== "Email or password is wrong"
-          ) {
-            router.push("/home");
-          } else {
-            setLoginError(response.data);
-          }
-        });
+      router.push("/");
     } catch (error: any) {
-      // alert(error.response.data);
       setLoginError(error.response.data);
     }
   };

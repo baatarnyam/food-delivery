@@ -15,13 +15,12 @@ export default function UserProvider({ children }: any) {
   const [isLogin, setIsLogin] = useState(false);
   const router = useRouter();
 
-  const token = localStorage.getItem("Token");
-  // const token = typeof window !== "undefined" && localStorage.getItem("Token");
+  const token = typeof window !== "undefined" && localStorage.getItem("Token");
 
   useEffect(() => {
-    if (!token) {
-      // console.log("token undefined");
-      return;
+    if (!token || token) {
+      router.push("./home");
+      // return;
     }
 
     const verifyToken = async () => {
@@ -36,14 +35,10 @@ export default function UserProvider({ children }: any) {
             },
           }
         );
-        // console.log(result.data, "res data");
-        if (data === "Token is invalid") {
-          setIsLogin(false);
-        } else {
-          setIsLogin(true);
-        }
+        // console.log({ data });
+        setIsLogin(true);
       } catch (error: any) {
-        console.log(error.message, " verify token error");
+        console.log(error.message, "verify token error");
       }
     };
     verifyToken();
@@ -54,6 +49,5 @@ export default function UserProvider({ children }: any) {
   );
 }
 
-// eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImhlbGxvQGdtYWlsLmNvbSIsImlhdCI6MTcwNzE4ODM3MiwiZXhwIjoxNzA3Mjc0NzcyfQ.Z1eI-wcE5mZpRAwXxn7dPuV-AMxEtlwBe5NmtJezgQU
 // localStorage.removeItem("Token");
 // router.push("/login");

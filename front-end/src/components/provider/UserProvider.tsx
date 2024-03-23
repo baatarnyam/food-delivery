@@ -3,7 +3,6 @@
 import React from "react";
 import axios from "axios";
 import { useEffect, useState, createContext } from "react";
-import { useRouter } from "next/navigation";
 
 type DataType = {
   isLogin: boolean;
@@ -13,15 +12,10 @@ export const UserContext = createContext<DataType>({} as DataType);
 
 export default function UserProvider({ children }: any) {
   const [isLogin, setIsLogin] = useState(false);
-  const router = useRouter();
 
   const token = typeof window !== "undefined" && localStorage.getItem("Token");
 
   useEffect(() => {
-    if (!token || token) {
-      router.push("./home");
-    }
-
     const verifyToken = async () => {
       try {
         const { data } = await axios.post(
@@ -47,5 +41,3 @@ export default function UserProvider({ children }: any) {
     <UserContext.Provider value={{ isLogin }}>{children}</UserContext.Provider>
   );
 }
-
-// localStorage.removeItem("Token");

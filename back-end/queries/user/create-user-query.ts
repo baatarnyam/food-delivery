@@ -1,8 +1,8 @@
-import { Request } from "express";
+import { Request, Response } from "express";
 import { UserModel } from "../../db";
 import { passwordHash } from "../../utils";
 
-export const createUserQuery = async (req: Request) => {
+export const createUserQuery = async (req: Request, res: Response) => {
   try {
     const { name, email, phone, password } = req.body;
 
@@ -14,6 +14,7 @@ export const createUserQuery = async (req: Request) => {
       phone,
       password: hash,
     });
+
     return user;
   } catch (error: any) {
     throw new Error(error.message);

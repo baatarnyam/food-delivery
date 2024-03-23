@@ -20,7 +20,6 @@ export default function UserProvider({ children }: any) {
   useEffect(() => {
     if (!token || token) {
       router.push("./home");
-      // return;
     }
 
     const verifyToken = async () => {
@@ -50,4 +49,3 @@ export default function UserProvider({ children }: any) {
 }
 
 // localStorage.removeItem("Token");
-// router.push("/login");

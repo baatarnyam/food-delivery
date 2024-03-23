@@ -1,26 +1,21 @@
-'use client'
+"use client";
 
-import  { useState } from "react";
 import { Box, Button } from "@mui/material";
 import HeaderRight from "./HeaderRight";
 import { useRouter } from "next/navigation";
 import { usePathname } from "next/navigation";
 
-
-
-
 export default function Header() {
-  // const [color, sestColor] = useState(false)
-  const {push} = useRouter()
-  const pathname = usePathname()
+  const { push } = useRouter();
+  const pathname = usePathname();
 
   const handleHome = () => {
-    push("/home")
-  }
+    push("/home");
+  };
 
   const handleMenu = () => {
-    push("/menu")
-  }
+    push("/menu");
+  };
   return (
     <Box
       sx={{
@@ -44,7 +39,7 @@ export default function Header() {
       >
         <img src="/Logo.png" width={41} height={41} />
         <Button
-        onClick={handleHome}
+          onClick={handleHome}
           sx={{
             fontSize: "14px",
             fontWeight: "700",
@@ -56,13 +51,12 @@ export default function Header() {
             color: `${pathname === "/home" ? "#18BA51" : "black"}`,
           }}
           variant="text"
-          
         >
           НҮҮР
         </Button>
 
         <Button
-        onClick={handleMenu}
+          onClick={handleMenu}
           sx={{
             fontSize: "14px",
             fontWeight: "700",

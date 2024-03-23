@@ -23,6 +23,7 @@ export const checkToken = async (req: Request, res: Response) => {
       token,
       process.env.JWT_SECRET || "defaultSecret"
     );
+
     return { tokenVerify, user };
   } catch (err: any) {
     throw new Error(err.message);

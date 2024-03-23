@@ -11,6 +11,7 @@ import Link from "next/link";
 export default function Login() {
   const [userData, setUserData] = useState({});
   const [loginError, setLoginError] = useState();
+  const [disabled, setDisabled] = useState(true);
 
   const handleChange = (e: any) => {
     const { name, value } = e.target;
@@ -19,7 +20,15 @@ export default function Login() {
       ...userData,
       [name]: value,
     });
-    // console.log(userData);
+    console.log(userData);
+
+    // useEffect(() => {
+    //   if (userData.email == "" && userData.password == "") {
+    //     setDisabled(true);
+    //   } else {
+    //     false;
+    //   }
+    // }, [e.target]);
   };
   const router = useRouter();
 
@@ -95,6 +104,7 @@ export default function Login() {
           height: "45px",
         }}
         onClick={handleClicked}
+        disabled={disabled ? true : false}
       >
         Нэвтрэх
       </Button>

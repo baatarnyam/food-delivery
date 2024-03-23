@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Box, Divider, ListItem, Stack, Typography } from "@mui/material";
+import { Box, Divider, Stack, Typography } from "@mui/material";
 import Link from "@mui/material/Link";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
@@ -60,13 +60,15 @@ export default function Footer() {
           >
             Нүүр
           </Link>
+
           <Link
-            href="#"
+            href="/contact"
             underline="always"
             sx={{ color: "white", fontSize: "16px" }}
           >
             Холбоо барих
           </Link>
+
           <Link
             href="/menu"
             underline="always"
@@ -74,13 +76,15 @@ export default function Footer() {
           >
             Хоолны цэс
           </Link>
+
           <Link
-            href="#"
+            href="/termsOfService"
             underline="always"
             sx={{ color: "white", fontSize: "16px" }}
           >
             Үйлчилгээний нөхцөл
           </Link>
+
           <Link
             href="#"
             underline="always"
@@ -88,8 +92,9 @@ export default function Footer() {
           >
             Хүргэлтийн бүс
           </Link>
+
           <Link
-            href="#"
+            href="/privacy"
             underline="always"
             sx={{ color: "white", fontSize: "16px" }}
           >

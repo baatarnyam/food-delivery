@@ -122,7 +122,7 @@ export default function SignUp() {
             Утас
           </Typography>
           <Input
-            type="number"
+            type="phone"
             height="42px"
             placeholder="Утасны дугаараа оруулна уу"
             name="phone"

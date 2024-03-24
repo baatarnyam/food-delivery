@@ -14,7 +14,7 @@ export default function ForgetPassword() {
           marginBottom: "75px",
           gap: "48px",
           padding: "32px",
-          border: "solid",
+          // border: "solid",
           alignItems: "center",
         }}
       >

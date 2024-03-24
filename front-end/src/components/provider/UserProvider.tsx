@@ -28,7 +28,8 @@ export default function UserProvider({ children }: any) {
             },
           }
         );
-        // console.log({ data });
+        // console.log(data, "data data");
+
         setIsLogin(true);
       } catch (error: any) {
         console.log(error.message, "verify token error");

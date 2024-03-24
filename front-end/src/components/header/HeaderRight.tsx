@@ -34,15 +34,9 @@ export default function HeaderRight() {
     if (!isLogin) {
       push("/login");
     } else {
-      console.log("user profile");
+      push("/userProfile");
     }
   };
-
-  // const handleChange = () => {
-  //   if (isLogin) {
-
-  //   }
-  // }
 
   return (
     <Box
@@ -112,7 +106,6 @@ export default function HeaderRight() {
             color: "black",
           }}
           onClick={handleClick}
-          // onChange={(e) => setSearch(e.target.value)}
         >
           <PersonOutlineIcon
             sx={{ width: "24px", height: "24px", color: "#18BA51" }}

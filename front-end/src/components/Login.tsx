@@ -33,7 +33,7 @@ export default function Login() {
 
       localStorage.setItem("Token", data.token);
 
-      router.push("/");
+      router.push("/home");
     } catch (error: any) {
       setLoginError(error.response.data);
     }

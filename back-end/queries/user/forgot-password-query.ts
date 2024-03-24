@@ -13,8 +13,8 @@ export const forgorPasswordQuery = async (req: Request, res: Response) => {
   // const randomNumber = Math.floor(Math.random() * 10000);
   // console.log(randomNumber);
 
-  const randomFourDigitNumber = Math.floor(1000 + Math.random() * 9000);
-  console.log(randomFourDigitNumber);
+  const randomNumber = Math.floor(1000 + Math.random() * 9000);
+  console.log(randomNumber);
 
   const isUser = await isEmailValid(email);
 
@@ -36,8 +36,8 @@ export const forgorPasswordQuery = async (req: Request, res: Response) => {
   const options = {
     from: "bbaatarnya@gmail.com",
     to: "baatarnyamganbold@gmail.com",
-    subject: "Hello it's your One time password",
-    Number: randomFourDigitNumber,
+    subject: `Your one time password is: ${randomNumber}`,
+    Number: randomNumber,
   };
 
   await transporter.sendMail(options);

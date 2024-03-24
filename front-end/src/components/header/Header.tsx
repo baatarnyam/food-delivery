@@ -16,6 +16,10 @@ export default function Header() {
   const handleMenu = () => {
     push("/menu");
   };
+
+  const handleDeliveryArea = () => {
+    push("/deliveryArea");
+  };
   return (
     <Box
       sx={{
@@ -82,6 +86,7 @@ export default function Header() {
             alignItems: "center",
             color: "black",
           }}
+          onClick={handleDeliveryArea}
         >
           ХҮРГЭЛТИЙН БҮС
         </Button>

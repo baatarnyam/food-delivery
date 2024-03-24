@@ -6,11 +6,12 @@ export default function TermsOfService() {
     <Stack
       sx={{
         width: "1200px",
-        height: "fit",
+        height: "content-fit",
         gap: "40px",
         margin: "auto",
         marginTop: "75px",
         marginBottom: "90px",
+        border: "solid",
       }}
     >
       <Stack direction="row" spacing={1}>

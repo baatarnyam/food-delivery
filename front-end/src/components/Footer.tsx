@@ -86,7 +86,7 @@ export default function Footer() {
           </Link>
 
           <Link
-            href="#"
+            href="/deliveryArea"
             underline="always"
             sx={{ color: "white", fontSize: "16px" }}
           >

@@ -11,7 +11,6 @@ export default function TermsOfService() {
         margin: "auto",
         marginTop: "75px",
         marginBottom: "90px",
-        border: "solid",
       }}
     >
       <Stack direction="row" spacing={1}>

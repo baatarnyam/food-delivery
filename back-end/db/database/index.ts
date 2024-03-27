@@ -8,7 +8,7 @@ const CONNECTION_STRING: string =
 export const connectDb = async () => {
   try {
     set("strictQuery", false);
-    await connect(CONNECTION_STRING),
+    await connect(CONNECTION_STRING), 
       console.log("Successfully connected to Db");
   } catch (error) {
     console.log("Db connect is unsuccessfully ");

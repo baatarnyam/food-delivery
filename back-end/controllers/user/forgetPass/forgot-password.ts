@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { forgorPasswordQuery } from "../../queries";
+import { forgorPasswordQuery } from "../../../queries";
 
 export const forgotController = async (req: Request, res: Response) => {
   try {

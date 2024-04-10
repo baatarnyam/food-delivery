@@ -1,6 +1,6 @@
 import nodemailer from "nodemailer";
 import { Request, Response } from "express";
-import { UserModel } from "../../db";
+import { UserModel } from "../../../db";
 
 const isEmailValid = async (email: string) => {
   const result = UserModel.findOne({ email: email });
@@ -19,7 +19,7 @@ export const forgorPasswordQuery = async (req: Request, res: Response) => {
   const isUser = await isEmailValid(email);
 
   if (!isUser) {
-    throw new Error("Email is wrong");
+    throw new Error("Имайл хаяг буруу !");
   }
 
   const transporter = nodemailer.createTransport({
@@ -36,8 +36,8 @@ export const forgorPasswordQuery = async (req: Request, res: Response) => {
   const options = {
     from: "bbaatarnya@gmail.com",
     to: "baatarnyamganbold@gmail.com",
-    subject: `Your one time password is: ${randomNumber}`,
-    Number: randomNumber,
+    subject: "Food delivery",
+    text: `${email} хаягт илгээсэн нэг удаагийн нууц үг: ${randomNumber}`,
   };
 
   await transporter.sendMail(options);
